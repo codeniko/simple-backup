@@ -6,6 +6,8 @@ GITHUB_USER='codeniko'
 
 GITIGNORE='.gitignore'
 
+# git lfs install
+
 function create_gitignore() {
   #echo "Creating $GITIGNORE file."
   echo "$GITIGNORE" > "$GITIGNORE"
@@ -20,6 +22,8 @@ function init_repo() {
   test -z $repo_name && echo "Repo name required." 1>&2 && exit 1
   git init > /dev/null
   git remote add origin "git@github.com:$GITHUB_USER/$repo_name.git"
+  git lfs track "*.sketch"
+  git add .gitattributes
 }
 
 function get_repo_name() {
